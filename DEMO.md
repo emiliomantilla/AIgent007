@@ -8,8 +8,9 @@ Please record a 3–5 minute walkthrough showing:
 
 ---
 
-📺 **Provide a Hosted Public Video Link (YouTube unlisted / Loom / MP4):**  MUST BE ON A HOS
-https://your.video.link.here
+📺 **Provide a Hosted Public Video Link (YouTube unlisted / Loom / MP4):**  MUST BE ON A HOST
+
+https://www.canva.com/design/DAGuR4DpY3s/wrQWBzOZ2GIUq12ikTAnfQ/watch?utm_content=D[…]hare&utm_medium=link2&utm_source=uniquelinks&utlId=h2d0fa08ce7
 
 PLEASE DO NOT UPLOAD RAW VIDOE FILES. These submissions will not be reviewed.
 
