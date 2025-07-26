@@ -4,3 +4,6 @@ firebase-service-account.json
 src/.streamlit
 src/__pycache__
 plan.md
+.DS_Store
+.DS_Store
+src/.DS_Store
