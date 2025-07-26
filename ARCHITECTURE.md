@@ -3,22 +3,15 @@
 ```markdown
 # Architecture Overview
 
-Below, sketch (ASCII, hand-drawn JPEG/PNG pasted in, or ASCII art) the high-level components of your agent.
+![Job Recommendation Screenshot](images/job-rec.jpg)
 
 ## Components
 
-1. **User Interface**  
-   - E.g., Streamlit, CLI, Slack bot  
-
-2. **Agent Core**  
-   - **Planner**: how you break down tasks  
-   - **Executor**: LLM prompt + tool-calling logic  
-   - **Memory**: vector store, cache, or on-disk logs  
-
-3. **Tools / APIs**  
-   - E.g., Google Gemini API, Tools, etc
-
-4. **Observability**  
-   - Logging of each reasoning step  
-   - Error handling / retries  
+1. **User Interface**
+   - Streamlit
+2. **Agent Core**
+   - **Executor**: Gemini used to extract structured data (json) from images of job listings or text based job listings. Sentence Transformers is used to create embeddings of the skills required for each jobs along with the skills of each user. Cosine Similarity is used to do a comparison. The best matching user is returned & Gemini is used to generate a report.
+   - **Memory**: In memory vector store of job skill embeddings
+3. **Tools / APIs**
+   - E.g., Google Gemini API
 
