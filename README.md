@@ -1,50 +1,30 @@
-# Agentic AI App Hackathon Template
+AIgent007 London Aid and Growth Navigator
+------------------------------------------
+The project London Aid & Growth Navigator, is an AI-powered, mobile-first web tool designed for homeless individuals in London who possess smartphones. Its core purpose is twofold:
+1.	Immediate Assistance: Intelligently match users with available shelters and food banks, prioritizing based on proximity, simulated real-time availability, and personalized preferences/past experiences.
+2.	Medium-to-Long-Term Growth: Connect users with libraries and micro-learning courses to address skill gaps and enhance job market readiness.
+The application will leverage the Google Gemini API for natural language understanding, intelligent matching, and conversational guidance, aiming to support both immediate needs and personal development.
 
-Welcome! This repository is your starting point for the **Agentic AI App Hackathon**. It includes:
+Synthetic Data
+----------------
+o	Data for shelters, food banks, libraries, and micro-learning courses.
+o	Ensure shelter data includes fields for simulated availability, location (lat/lon), and descriptive notes for matching preferences (e.g., "quiet," "women-only," "pet-friendly").
+o	Include relevant details for libraries (e.g., computer access) and learning courses (e.g., topic, online/in-person).
+o	Define a fixed "kiosk location" (still useful for demonstrating public access points, but primary focus is mobile).
 
-- A consistent folder structure  
-- An environment spec (`environment.yml` or `Dockerfile`)  
-- Documentation placeholders to explain your design and demo
-
-## 📋 Submission Checklist
-
-- [ ] All code in `src/` runs without errors  
-- [ ] `ARCHITECTURE.md` contains a clear diagram sketch and explanation  
-- [ ] `EXPLANATION.md` covers planning, tool use, memory, and limitations  
-- [ ] `DEMO.md` links to a 3–5 min video with timestamped highlights  
-
-
-## 🚀 Getting Started
-
-1. **Clone / Fork** this template.  Very Important. Fork Name MUST be the same name as the teamn name
-2. **Install dependencies**  
-   ```bash
-   # Conda
-   conda env create -f environment.yml
-   conda activate agentic-hackathon
-
-   #—or Docker—
-   docker build -t agentic-agent .
-   docker run --rm -it agentic-agent bash
-
-## 📂 Folder Layout
-
-![Folder Layout Diagram](images/folder-githb.png)
-
-
-
-## 🏅 Judging Criteria
-
-- **Technical Excellence **  
-  This criterion evaluates the robustness, functionality, and overall quality of the technical implementation. Judges will assess the code's efficiency, the absence of critical bugs, and the successful execution of the project's core features.
-
-- **Solution Architecture & Documentation **  
-  This focuses on the clarity, maintainability, and thoughtful design of the project's architecture. This includes assessing the organization and readability of the codebase, as well as the comprehensiveness and conciseness of documentation (e.g., GitHub README, inline comments) that enables others to understand and potentially reproduce or extend the solution.
-
-- **Innovative Gemini Integration **  
-  This criterion specifically assesses how effectively and creatively the Google Gemini API has been incorporated into the solution. Judges will look for novel applications, efficient use of Gemini's capabilities, and the impact it has on the project's functionality or user experience. You are welcome to use additional Google products.
-
-- **Societal Impact & Novelty **  
-  This evaluates the project's potential to address a meaningful problem, contribute positively to society, or offer a genuinely innovative and unique solution. Judges will consider the originality of the idea, its potential real‑world applicability, and its ability to solve a challenge in a new or impactful way.
-
-
+Agent Development (Mobile-First Web UI)
+-------------------------------------------
+•	Responsive Web UI: Design the chatbot interface to be highly usable on smartphones, with adaptability for larger screens (e.g., library kiosks).
+o	Implement intuitive touch screen options and a prominent voice input button.
+o	Develop a clear conversational flow for both immediate aid and learning queries.
+o	Include a mechanism for users to input personal preferences or past experiences for matching.
+•	planner.py Module:
+o	Develop logic to discern user intent for either immediate aid (shelter/food) or long-term growth (learning).
+o	Plan sub-tasks for personalized matching, including preference integration, availability checks, and proximity sorting.
+•	executor.py Module:
+o	Gemini API Integration: Core for natural language understanding, intelligent decision-making, and generating tailored conversational responses.
+o	Resource Database Tool: Query your synthetic data for all resource types (shelters, food banks, libraries, courses).
+o	Personalized Matching Algorithm: Implement logic to combine availability, proximity, and user preferences to recommend the most suitable resources.
+o	Simulated "Call Initiator" Tool: For shelter confirmation.
+•	memory.py Module:
+o	Crucial for storing user preferences, past interactions, and potentially learning interests within a session to enable personalized responses.
