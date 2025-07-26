@@ -1,2 +1,6 @@
 .env
+<<<<<<< HEAD
 src/firebase-service-account.json
+=======
+firebase-service-account.json
+>>>>>>> 6a5e91dfc83ed161fd38ff00431f6cc359b0145e
