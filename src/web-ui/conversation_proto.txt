@@ -1,0 +1,74 @@
+**1. Initial Greeting & Menu:**
+
+* **Bot:** "Hello! I'm here to help you find resources in London. What can I assist you with today?"
+* **Quick Reply Buttons:**
+    * "Find Housing"
+    * "Upskill & Learn"
+    * "Find Work"
+    * "Tell me about myself" (for preference input)
+    * "Talk to a human" (Escalation)
+* **Voice Prompt:** "You can also tell me what you're looking for, for example, 'Find a shelter in East London' or 'Show me IT courses'."
+
+**2. Conversational Flow for "Find Housing":**
+
+* **User selects "Find Housing" or says "I need housing."**
+* **Bot:** "Okay, let's find some housing options. What area of London are you interested in? (e.g. 'West London', 'East London', 'Anywhere')"
+* **User provides area/preference.** --> (postcode lookup in Properties table)
+* **Bot:** "Are you looking for emergency accommodation, a longer-term hostel, or supported housing?"
+    * **Quick Reply Buttons:** "Emergency Shelter", "Hostel (Long-term)", "Supported Housing", "Not sure" (housing_type in Properties table)
+* **User selects/states preference.**
+* **Bot:** "Do you have any specific needs, such as accessibility requirements, or if you are seeking family accommodation?" (This is where preference input comes in)
+* **User provides details (or indicates "No specific needs").** (accessibility_features in Properties table)
+* **Bot (retrieves data):** "Searching for [type of housing] in [area] with [preferences]... Please wait a moment."
+* **Bot (results):** "Here are a few options that match: (from Properties table)
+    * **[Option 1 Name]:** [Address], [Brief description], [Contact Number/Website Link]. [Distance/Travel Time from current location, if location services enabled]
+    * **[Option 2 Name]:** ...
+    * **[Option 3 Name]:** ...
+    * "Would you like more details on any of these, or to refine your search?"
+* **Quick Reply Buttons:** "More details on Option 1", "Refine Search", "Start Over", "Talk to a human"
+
+**3. Conversational Flow for "Upskill & Learn":**
+
+* **User selects "Upskill & Learn" or says "I want to learn new skills."**
+* **Bot:** "Great! What kind of skills are you interested in learning? Or what type of job are you hoping to get?"
+    * **Quick Reply Buttons:** "Digital Skills", "Construction", "Hospitality", "Healthcare", "Language", "Not sure, suggest something"
+* **User provides interest.** (similarity match to description field in Microcourses table)
+* **Bot:** "Are you looking for online courses, in-person classes, or flexible learning options?"
+* **User specifies.** (learning_format in Microcourses table)
+* **Bot (retrieves data):** "Searching for [skill type] courses with [learning preference]... Please wait a moment."
+* **Bot (results):** "Here are some micro-courses that might be a good fit:
+    * **[Course Name]:** [Provider], [Duration], [Brief description], [Link to course].
+    * **[Course Name]:** ...
+    * "Would you like to see more options, or are you interested in potential employers for these skills?"
+* **Quick Reply Buttons:** "More courses", "Show me employers", "Start Over"
+
+**4. Conversational Flow for "Find Work":**
+
+* **User selects "Find Work" or says "I need a job."**
+* **Bot:** "Okay, let's look for part-time work. What kind of work are you interested in, or what experience do you have?"
+    * **Quick Reply Buttons:** "Retail", "Catering", "Cleaning", "Warehouse", "Any part-time work"
+* **User specifies.**
+* **Bot:** "Are you looking for work in a specific part of London, or flexible shifts?"
+* **User specifies area/flexibility.**
+* **Bot (retrieves data):** "Searching for part-time [job type] in [area/flexibility]... Please wait a moment."
+* **Bot (results):** "Here are some part-time job opportunities:
+    * **[Job Title]:** [Company], [Location], [Brief description], [Hourly Rate/Salary], [Application Link].
+    * **[Job Title]:** ...
+    * "Would you like to apply directly, or see more jobs?"
+* **Quick Reply Buttons:** "Apply for this job", "Show more jobs", "Refine search", "Start Over"
+
+**C. Mechanism for User Preferences/Past Experiences**
+
+1.  **"Tell me about myself" Feature:**
+    * **Initial Prompt:** The chatbot can introduce this option early on in the conversation, or users can explicitly select it.
+    * **Bot:** "To help me find the best options for you, I can ask a few questions about your preferences and experiences. This information will be kept confidential and used only to personalize your search. Would you like to proceed?"
+    * **User:** "Yes"
+    * **Bot:** "Great. Let's start with housing. Have you stayed in any shelters or hostels before? If so, what did you find helpful or unhelpful?" (Open-ended text input, but also provide quick replies for common answers like "First time", "Prefer quiet places", "Need family rooms").
+    * **Bot:** "Regarding upskilling, do you have any previous qualifications or work experience that might be relevant? (e.g., 'Forklift license', 'Worked in kitchens', 'Basic computer skills')." (skill_category in skills table)
+    * **Bot:** "For work, what are your availability preferences? (e.g., 'Evenings only', 'Weekends', 'Full weekdays')."
+    * **Data Storage:** These preferences would be stored locally (e.g., in `localStorage` for web or `AsyncStorage` for React Native) for anonymous, session-based use. For persistent user profiles (if user authentication is implemented, though probably not for initial anonymous access), they would be stored in the backend database.
+    * **Application of Preferences:** The agentic UI would use these preferences to filter and rank search results, presenting the most relevant options first. For example, if a user prefers quiet housing, the bot would prioritize listings known for quieter environments (if such data is available).
+
+2.  **Implicit Preference Gathering:**
+    * The chatbot will also learn implicitly from user interactions. If a user consistently asks about jobs in "South London," the bot can subtly prioritize South London jobs in future "Find Work" queries.
+    * The backend agent could use basic Natural Language Processing (NLP) to extract entities and intentions from user utterances and use them to refine future interactions.
